@@ -23,8 +23,9 @@ export default function ListLoan() {
     function deleteLoan(id){
         if(window.confirm("Deseja realmente excluir esse Empréstimo?")){
             deleteLoanById(id).then((data) => {
-                toast('Empréstimo excluído com sucesso!');
-                setReload(!reload);
+                toast('Empréstimo excluído com sucesso!', {
+                    onClose: () => setReload(!reload),
+                });
             }).catch((err) => {
                 toast('Não foi possível concluir a operação!');
                 console.log(err);
@@ -35,7 +36,6 @@ export default function ListLoan() {
     return (
         <>
             <ListContainer>
-                <ToastContainer/>
                 <table>
                     <thead>
                         <tr>
@@ -74,6 +74,7 @@ export default function ListLoan() {
                         )}
                     </tbody>
                 </table>
+                <ToastContainer/>
             </ListContainer>
         </>
     )

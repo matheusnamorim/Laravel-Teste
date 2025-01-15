@@ -23,8 +23,9 @@ export default function ListUsers() {
     function deleteAuthor(id){
         if(window.confirm("Deseja realmente excluir esse usuário?")){
             deleteUserById(id).then((data) => {
-                toast('Autor excluído com sucesso!');
-                setReload(!reload);
+                toast('Usuário excluído com sucesso!', {
+                    onClose: () => setReload(!reload),
+                });
             }).catch((err) => {
                 toast('Não foi possível concluir a operação!');
                 console.log(err);
@@ -35,7 +36,6 @@ export default function ListUsers() {
     return (
         <>
             <ListContainer>
-                <ToastContainer/>
                 <table>
                     <thead>
                         <tr>
@@ -70,6 +70,7 @@ export default function ListUsers() {
                         )}
                     </tbody>
                 </table>
+                <ToastContainer/>
             </ListContainer>
         </>
     )

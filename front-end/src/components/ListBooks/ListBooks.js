@@ -24,8 +24,9 @@ export default function ListBooks() {
     function deleteBook(id){
         if(window.confirm("Deseja realmente excluir esse livro?")){
             deleteBookById(id).then((data) => {
-                toast('Livro excluído com sucesso!');
-                setReload(!reload);
+                toast('Livro excluído com sucesso!', {
+                    onClose: () => setReload(!reload),
+                });
             }).catch((err) => {
                 toast('Não foi possível concluir a operação!');
                 console.log(err);
@@ -36,7 +37,6 @@ export default function ListBooks() {
     return (
         <>
             <ListContainer>
-                <ToastContainer/>
                 <table>
                     <thead>
                         <tr>
@@ -77,6 +77,7 @@ export default function ListBooks() {
                         )}
                     </tbody>
                 </table>
+                <ToastContainer/>
             </ListContainer>
         </>
     )
