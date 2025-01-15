@@ -64,7 +64,7 @@ export default function ListLoan() {
                                 <td><p>{format(new Date(value.updated_at), 'dd/MM/yyyy HH:mm:ss')}</p></td>
                                 <td>
                                     <BtnEdit>
-                                        <Link to={`/editUser/${value.id}`} style={{ textDecoration: 'none' }}>
+                                        <Link to={`/editLoan/${value.id}`} style={{ textDecoration: 'none' }}>
                                             Editar
                                         </Link>
                                     </BtnEdit>

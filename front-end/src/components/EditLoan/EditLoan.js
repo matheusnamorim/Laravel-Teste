@@ -1,14 +1,15 @@
 import Container from "../../styles/Container";
 import Form from "../../styles/Form";
 import { Wrapp, Header } from "../../styles/styles";
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { registerLoan, listUsers, listBooks } from "../services/laravel_teste";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { toast, ToastContainer } from 'react-toastify';
+import { listUsers, listBooks, listLoanById, updateLoanById } from "../services/laravel_teste";
 
-export default function RegisterLoan() {
+export default function EditLoan() {
 
     const navigate = useNavigate();
+    const params = useParams();
     const [listUser, setListUser] = useState([]);
     const [listBook, setListBook] = useState([]);
     const [userId, setUserId] = useState('');
@@ -32,24 +33,37 @@ export default function RegisterLoan() {
             toast('Não foi possível concluir a operação!');
             console.log(error);
         });
+
+        listLoanById(params.idLoan)
+            .then((data) => {
+                const loan = data.data;
+                setUserId(loan.user_id);
+                setBookId(loan.livro_id);
+                setStatus(loan.situacao);
+                setDtDev(loan.dtdevolucao);
+        }).catch((err) => {
+            toast('Não foi possível concluir a operação!');
+            console.log(err);
+        });
     }, []);
 
-    function register(event){
+    function edit(event){
         event.preventDefault();
 
         if(userId === '' || bookId === '' || status === '' || dtDev === '') {
             return toast('Necessário preencher todos os campos!');
         }
 
-        registerLoan({
+        updateLoanById({
             "user_id": userId,
             "livro_id": bookId, 
-            "situacao": status,
-            "dtdevolucao": dtDev
-            }).then((data) => {
+            "situacao": status, 
+            "dtdevolucao": dtDev, 
+            }, params.idLoan).then((data) => {
                 navigate('/');
         }).catch((err) => {
-              console.log(err);
+            toast('Não foi possível concluir a operação!');
+            console.log(err);
         });
     }
 
@@ -58,9 +72,9 @@ export default function RegisterLoan() {
             <Container>
                 <Wrapp>
                     <Header>
-                        <h1>Incluindo Empréstimo</h1>
+                        <h1>Editando Empréstimo {params.idLoan}</h1>
                     </Header>
-                    <Form onSubmit={register} >
+                    <Form onSubmit={edit} >
                         <div>
                             <p>Usuário:</p>
                             <select name="userId" value={userId} onChange={(e) => setUserId(e.target.value)}>
@@ -89,7 +103,7 @@ export default function RegisterLoan() {
                             <input type="date" name="dtDev" value={dtDev} onChange={(e) => setDtDev(e.target.value)}/>
                         </div>
                         <span>
-                        <button>Gravar</button>
+                        <button>Atualizar</button>
                     </span>
                     </Form>
                 </Wrapp>

@@ -6,6 +6,7 @@ import RegisterUsers from "./RegisterUsers/RegisterUsers";
 import EditBook from "./EditBook/EditBook";
 import RegisterBook from "./RegisterBook/RegisterBook";
 import RegisterLoan from "./RegisterLoan/RegisterLoan";
+import EditLoan from "./EditLoan/EditLoan";
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
 					<Route path="/editBook/:idBook" element={<EditBook />}/>
 					<Route path="/registerBook" element={<RegisterBook />}/>
 					<Route path="/registerLoan" element={<RegisterLoan />}/>
+					<Route path="/editLoan/:idLoan" element={<EditLoan />}/>
 				</Routes>
 			</BrowserRouter>
 		</>
