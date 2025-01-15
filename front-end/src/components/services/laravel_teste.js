@@ -12,6 +12,11 @@ function listUserById(id) {
     return promise;
 }
 
+function registerUsers(body) {
+    const promise = axios.post(`${BASE_URL}/usuarios`, body);
+    return promise;
+}
+
 function updateUserById(body, id) {
     const promise = axios.put(`${BASE_URL}/usuarios/${id}`, body);
     return promise;
@@ -22,4 +27,4 @@ function deleteUserById(id) {
     return promise;
 }
 
-export { listUsers, listUserById, updateUserById, deleteUserById };
+export { listUsers, listUserById, registerUsers, updateUserById, deleteUserById };

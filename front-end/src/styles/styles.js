@@ -48,4 +48,10 @@ const BtnDelete = styled.button`
     background-color: #9a171c;
 `;
 
-export { Wrapp, Header, BtnEdit, BtnDelete };
+const FakeDiv = styled.div`
+    margin: 10px 0;
+    padding: 10px;
+    align-self: end;
+`;
+
+export { Wrapp, Header, BtnEdit, BtnDelete, FakeDiv };
