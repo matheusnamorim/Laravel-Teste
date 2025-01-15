@@ -2,6 +2,7 @@ import Container from "../../styles/Container";
 import ListUsers from "../ListUsers/ListUsers";
 import { Wrapp, Header, FakeDiv, BtnEdit } from "../../styles/styles";
 import { Link } from "react-router-dom";
+import ListBooks from "../ListBooks/ListBooks";
 
 export default function HomePage() {
     return (
@@ -22,6 +23,7 @@ export default function HomePage() {
                     <Header>
                         <h1>Lista de Livros</h1>
                     </Header>
+                    <ListBooks />
                 </Wrapp>
             </Container>
         </>
