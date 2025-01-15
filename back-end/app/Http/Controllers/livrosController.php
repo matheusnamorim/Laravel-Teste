@@ -12,6 +12,7 @@ class livrosController extends Controller
     {
         return Livros::all();
     }
+
     public function store(Request $request)
     {
         try{
@@ -40,6 +41,7 @@ class livrosController extends Controller
             return response()->json(['error' => true, 'message' => $e->getMessage()]);
         }
     }
+    
     public function destroy(int $livros)
     {
         try{
