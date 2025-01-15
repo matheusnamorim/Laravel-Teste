@@ -57,4 +57,14 @@ function updateBookById(body, id) {
     return promise;
 }
 
-export { listUsers, listUserById, registerUsers, updateUserById, deleteUserById, listBooks, listBookById, registerBooks, deleteBookById, getAuthorByBookId, updateBookById };
+function listLoan() {
+    const promise = axios.get(`${BASE_URL}/emprestimo`);
+    return promise;
+}
+
+function deleteLoanById(id) {
+    const promise = axios.delete(`${BASE_URL}/emprestimo/${id}`);
+    return promise;
+}
+
+export { listUsers, listUserById, registerUsers, updateUserById, deleteUserById, listBooks, listBookById, registerBooks, deleteBookById, getAuthorByBookId, updateBookById, listLoan, deleteLoanById };

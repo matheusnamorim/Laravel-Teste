@@ -3,6 +3,7 @@ import ListUsers from "../ListUsers/ListUsers";
 import { Wrapp, Header, FakeDiv, BtnEdit } from "../../styles/styles";
 import { Link } from "react-router-dom";
 import ListBooks from "../ListBooks/ListBooks";
+import ListLoan from "../ListLoan/ListLoan";
 
 export default function HomePage() {
     return (
@@ -31,6 +32,10 @@ export default function HomePage() {
                             </Link>
                         </BtnEdit>
                     </FakeDiv>
+                    <Header>
+                        <h1>Lista de Empréstimos</h1>
+                    </Header>
+                    <ListLoan />
                 </Wrapp>
             </Container>
         </>

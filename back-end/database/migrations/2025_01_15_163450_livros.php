@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('livros', function (Blueprint $table) {
             $table->id();
             $table->string(column: 'titulo')->nullable(false);
-            $table->unsignedBigInteger('autor_id')->nullable(false);
-            $table->foreign('autor_id')->on('usuarios')->references('id');
+            $table->string(column: 'autor')->nullable(false);
             $table->enum('situacao', ['Emprestado', 'Disponivel'])->default('Disponivel');
             $table->string(column: 'genero')->nullable(false);
             $table->string(column: 'sinopse')->nullable(false);

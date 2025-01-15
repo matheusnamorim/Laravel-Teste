@@ -5,7 +5,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from 'react-toastify';
 import { listUsers, listBookById, updateBookById } from "../services/laravel_teste";
-import OptionAuthor from "./OptionAuthor";
 
 export default function EditBook() {
 
@@ -31,7 +30,7 @@ export default function EditBook() {
             .then((data) => {
                 const book = data.data;
                 setTitle(book.titulo);
-                setAuthor(book.author_id);
+                setAuthor(book.autor);
                 setStatus(book.situacao);
                 setGender(book.genero);
                 setSynopsis(book.sinopse);
@@ -47,10 +46,10 @@ export default function EditBook() {
         if(title === '' || author === '' || gender === '' || synopsis === '' || status === '' || yearOfPubli === '') {
             return toast('Necessário preencher todos os campos!');
         }
-        
+
         updateBookById({
             "titulo": title,
-            "autor_id": author, 
+            "autor": author, 
             "genero": gender, 
             "situacao": status, 
             "sinopse": synopsis, 
@@ -77,10 +76,7 @@ export default function EditBook() {
                         </div>
                         <div>
                             <p>Autores:</p>
-                            <select name="authors" value={author} onChange={(e) => setAuthor(e.target.value)}>
-                                <option value=""></option>
-                                {listAuthorEdit.length !== 0 ? listAuthorEdit.map((value, index) => <OptionAuthor value={value} index={index} id={params.idBook} setAuthor={setAuthor} />) : <></>}
-                            </select>
+                            <input type="text" name="author" value={author} onChange={(e) => setAuthor(e.target.value)}/>
                         </div>
                         <div>
                             <p>Gênero:</p>

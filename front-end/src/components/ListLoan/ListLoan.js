@@ -1,30 +1,29 @@
-import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import { format } from 'date-fns';
-import { deleteBookById, listBooks } from "../services/laravel_teste";
+import { listLoan, deleteLoanById } from "../services/laravel_teste";
+import { Link } from "react-router-dom";
 import ListContainer from "../../styles/ListContainer";
+import { format } from 'date-fns';
 import { BtnDelete, BtnEdit } from "../../styles/styles";
+import { toast, ToastContainer } from 'react-toastify';
 
-export default function ListBooks() {
+export default function ListLoan() {
 
     const [list, setList] = useState([]);
     const [reload, setReload] = useState(false);
 
     useEffect(() => {
-        listBooks()
+        listLoan()
             .then((data) => {
                 setList(data.data);
-        }).catch((err) => {
-            toast('Não foi possível concluir a operação!');
-            console.log(err);
+        }).catch((error) => {
+            console.log(error);
         });
     }, [reload]);
 
-    function deleteBook(id){
-        if(window.confirm("Deseja realmente excluir esse livro?")){
-            deleteBookById(id).then((data) => {
-                toast('Livro excluído com sucesso!');
+    function deleteLoan(id){
+        if(window.confirm("Deseja realmente excluir esse Empréstimo?")){
+            deleteLoanById(id).then((data) => {
+                toast('Empréstimo excluído com sucesso!');
                 setReload(!reload);
             }).catch((err) => {
                 toast('Não foi possível concluir a operação!');
@@ -41,12 +40,9 @@ export default function ListBooks() {
                     <thead>
                         <tr>
                             <th>Código</th>
-                            <th>Título</th>
-                            <th>Autor</th>
-                            <th>Gênero</th>
-                            <th>Sinopse</th>
-                            <th>Ano Publicação</th>
-                            <th>Situação</th>
+                            <th>Nome Completo</th>
+                            <th>Dt. Nascimento</th>
+                            <th>Email</th>
                             <th>Dh. Criação</th>
                             <th>Dh. Atualização</th>
                             <th></th>
@@ -57,22 +53,19 @@ export default function ListBooks() {
                         {list.map((value, index) => 
                             <tr key={index}>
                                 <td><p>{value.id}</p></td>
-                                <td><p>{value.titulo}</p></td>
-                                <td><p>{value.autor}</p></td>
-                                <td><p>{value.genero}</p></td>
-                                <td><p>{value.sinopse}</p></td>
-                                <td><p>{value.ano_publicacao}</p></td>
-                                <td><p>{value.situacao}</p></td>
+                                <td><p>{value.nome} {value.sobrenome}</p></td>
+                                <td><p>{format(new Date(value.dtnascimento), 'dd/MM/yyyy')}</p></td>
+                                <td><p>{value.email}</p></td>
                                 <td><p>{format(new Date(value.created_at), 'dd/MM/yyyy HH:mm:ss')}</p></td>
                                 <td><p>{format(new Date(value.updated_at), 'dd/MM/yyyy HH:mm:ss')}</p></td>
                                 <td>
                                     <BtnEdit>
-                                        <Link to={`/editBook/${value.id}`} style={{ textDecoration: 'none' }}>
+                                        <Link to={`/editUser/${value.id}`} style={{ textDecoration: 'none' }}>
                                             Editar
                                         </Link>
                                     </BtnEdit>
                                 </td>
-                                <td><BtnDelete onClick={() => deleteBook(value.id)}>Excluir</BtnDelete></td>
+                                <td><BtnDelete onClick={() => deleteLoan(value.id)}>Excluir</BtnDelete></td>
                             </tr>
                         )}
                     </tbody>

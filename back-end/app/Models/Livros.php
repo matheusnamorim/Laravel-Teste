@@ -9,10 +9,6 @@ class Livros extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['titulo', 'autor_id', 'situacao', 'genero', 'sinopse', 'ano_publicacao'];
+    protected $fillable = ['titulo', 'autor', 'situacao', 'genero', 'sinopse', 'ano_publicacao'];
 
-    public function autores()
-    {
-        return $this->belongsTo(related: Usuarios::class, foreignKey: 'autor_id');
-    }
 }

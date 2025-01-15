@@ -10,7 +10,7 @@ class livrosController extends Controller
 {
     public function index()
     {
-        return Livros::with('autores')->get();
+        return Livros::all();
     }
 
     public function store(Request $request)

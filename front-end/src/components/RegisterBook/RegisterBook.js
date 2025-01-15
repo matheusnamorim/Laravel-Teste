@@ -36,7 +36,7 @@ export default function RegisterBook() {
 
         registerBooks({
             "titulo": title,
-            "autor_id": 1, 
+            "autor": author, 
             "genero": gender, 
             "sinopse": synopsis, 
             "situacao": status,
@@ -63,10 +63,7 @@ export default function RegisterBook() {
                         </div>
                         <div>
                             <p>Autores:</p>
-                            <select name="authors" value={author} onChange={(e) => setAuthor(e.target.value)}>
-                                <option value=""></option>
-                                {listAuthorEdit.length !== 0 ? listAuthorEdit.map((value, index) => <option key={index} value={value.id}>{value.id} - {value.nome} {value.sobrenome}</option>) : <></>}
-                            </select>
+                            <input type="text" name="author" value={author} onChange={(e) => setAuthor(e.target.value)}/>
                         </div>
                         <div>
                             <p>Gênero:</p>
