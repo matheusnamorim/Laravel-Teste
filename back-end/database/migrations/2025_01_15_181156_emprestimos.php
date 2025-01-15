@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('livro_id')->nullable(false);
             $table->foreign('livro_id')->on('livros')->references('id');
             $table->enum('situacao', ['Atrasado', 'Devolvido', 'Em Aberto'])->default('Em Aberto');
-            $table->date(column: 'dtdevolucao')->nullable(false);
+            $table->date(column: 'dtdevolucao')->nullable();
             $table->timestamps();
         });
     }

@@ -37,7 +37,7 @@ export default function RegisterLoan() {
     function register(event){
         event.preventDefault();
 
-        if(userId === '' || bookId === '' || status === '' || dtDev === '') {
+        if(userId === '' || bookId === '' || status === '') {
             return toast('Necessário preencher todos os campos!');
         }
 

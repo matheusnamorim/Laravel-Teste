@@ -45,6 +45,7 @@ export default function ListLoan() {
                             <th>Código Livro</th>
                             <th>Nome do Livro</th>
                             <th>Situação</th>
+                            <th>Dt. Devolução</th>
                             <th>Dh. Criação</th>
                             <th>Dh. Atualização</th>
                             <th></th>
@@ -60,6 +61,7 @@ export default function ListLoan() {
                                 <td><p>{value.livro.id}</p></td>
                                 <td><p>{value.livro.titulo}</p></td>
                                 <td><p>{value.situacao}</p></td>
+                                <td><p>{value.dtdevolucao ? format(new Date(value.dtdevolucao), 'dd/MM/yyyy HH:mm:ss') : ''}</p></td>
                                 <td><p>{format(new Date(value.created_at), 'dd/MM/yyyy HH:mm:ss')}</p></td>
                                 <td><p>{format(new Date(value.updated_at), 'dd/MM/yyyy HH:mm:ss')}</p></td>
                                 <td>
