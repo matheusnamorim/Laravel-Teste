@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
-import { listUsers } from "../services/laravel_teste";
+import { listUsers, deleteUserById } from "../services/laravel_teste";
+import { Link } from "react-router-dom";
 import ListContainer from "../../styles/ListContainer";
 import { format } from 'date-fns';
+import { BtnDelete, BtnEdit } from "../../styles/styles";
 
 export default function ListUsers() {
 
     const [list, setList] = useState([]);
+    const [reload, setReload] = useState(false);
 
     useEffect(() => {
         listUsers()
@@ -14,7 +17,17 @@ export default function ListUsers() {
         }).catch((error) => {
             console.log(error);
         });
-    }, []);
+    }, [reload]);
+
+    function deleteAuthor(id){
+        if(window.confirm("Deseja realmente excluir esse usuário?")){
+            deleteUserById(id).then((data) => {
+                setReload(!reload);
+            }).catch((err) => {
+                console.log(err);
+            });
+        }
+    }
 
     return (
         <>
@@ -41,8 +54,14 @@ export default function ListUsers() {
                                 <td><p>{value.email}</p></td>
                                 <td><p>{format(new Date(value.created_at), 'dd/MM/yyyy HH:mm:ss')}</p></td>
                                 <td><p>{format(new Date(value.updated_at), 'dd/MM/yyyy HH:mm:ss')}</p></td>
-                                <td><p>Botão Editar</p></td>
-                                <td><p>Botão Excluir</p></td>
+                                <td>
+                                    <BtnEdit>
+                                        <Link to={`/editUser/${value.id}`} style={{ textDecoration: 'none' }}>
+                                            Editar
+                                        </Link>
+                                    </BtnEdit>
+                                </td>
+                                <td><BtnDelete onClick={() => deleteAuthor(value.id)}>Excluir</BtnDelete></td>
                             </tr>
                         )}
                     </tbody>

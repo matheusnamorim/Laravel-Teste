@@ -9,4 +9,19 @@ const Wrapp = styled.div`
     padding: 10px;
     border-radius: 10px;
     background-color: #FFF;
+
+    button {
+        border-radius: 5px;
+        height: 40px;
+        min-width: 100px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        font-weight: 700;
+        margin-left: 20px;
+        color: #000;
+    }
 `;
+
