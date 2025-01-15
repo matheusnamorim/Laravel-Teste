@@ -4,6 +4,7 @@ import { Wrapp, Header } from "../../styles/styles";
 import { useNavigate, useParams } from "react-router-dom";
 import { listUserById, updateUserById } from "../services/laravel_teste";
 import { useEffect, useState } from "react";
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function EditUser() {
 
@@ -27,6 +28,11 @@ export default function EditUser() {
 
     function edit(event){
         event.preventDefault();
+
+        if(name === '' || dtBirth === '' || email === '') {
+            return toast('Necessário preencher todos os campos!');
+        }
+
         updateUserById({
             "nome": name,
             "dtnascimento": dtBirth, 
@@ -63,6 +69,7 @@ export default function EditUser() {
                     </span>
                     </Form>
                 </Wrapp>
+                <ToastContainer/>
             </Container>
         </>
     );

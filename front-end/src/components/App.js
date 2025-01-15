@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage/HomePage";
 import EditUser from "./EditUsers/EditUsers";
 import RegisterUsers from "./RegisterUsers/RegisterUsers";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
 	return (

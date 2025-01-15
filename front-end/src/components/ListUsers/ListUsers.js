@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ListContainer from "../../styles/ListContainer";
 import { format } from 'date-fns';
 import { BtnDelete, BtnEdit } from "../../styles/styles";
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function ListUsers() {
 
@@ -22,6 +23,7 @@ export default function ListUsers() {
     function deleteAuthor(id){
         if(window.confirm("Deseja realmente excluir esse usuário?")){
             deleteUserById(id).then((data) => {
+                toast('Autor excluído com sucesso!');
                 setReload(!reload);
             }).catch((err) => {
                 console.log(err);
@@ -32,6 +34,7 @@ export default function ListUsers() {
     return (
         <>
             <ListContainer>
+                <ToastContainer/>
                 <table>
                     <thead>
                         <tr>
