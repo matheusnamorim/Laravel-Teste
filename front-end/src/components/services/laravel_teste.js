@@ -37,6 +37,11 @@ function listBookById(id) {
     return promise;
 }
 
+function registerBooks(body) {
+    const promise = axios.post(`${BASE_URL}/livros`, body);
+    return promise;
+}
+
 function deleteBookById(id) {
     const promise = axios.delete(`${BASE_URL}/livros/${id}`);
     return promise;
@@ -52,4 +57,4 @@ function updateBookById(body, id) {
     return promise;
 }
 
-export { listUsers, listUserById, registerUsers, updateUserById, deleteUserById, listBooks, listBookById, deleteBookById, getAuthorByBookId, updateBookById };
+export { listUsers, listUserById, registerUsers, updateUserById, deleteUserById, listBooks, listBookById, registerBooks, deleteBookById, getAuthorByBookId, updateBookById };

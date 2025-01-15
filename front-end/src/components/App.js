@@ -4,6 +4,7 @@ import HomePage from "./HomePage/HomePage";
 import EditUser from "./EditUsers/EditUsers";
 import RegisterUsers from "./RegisterUsers/RegisterUsers";
 import EditBook from "./EditBook/EditBook";
+import RegisterBook from "./RegisterBook/RegisterBook";
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
 					<Route path="/editUser/:idUser" element={<EditUser />}/>
 					<Route path="/registerUsers" element={<RegisterUsers />}/>
 					<Route path="/editBook/:idBook" element={<EditBook />}/>
+					<Route path="/registerBook" element={<RegisterBook />}/>
 				</Routes>
 			</BrowserRouter>
 		</>

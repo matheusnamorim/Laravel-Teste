@@ -24,6 +24,13 @@ export default function HomePage() {
                         <h1>Lista de Livros</h1>
                     </Header>
                     <ListBooks />
+                    <FakeDiv>
+                        <BtnEdit>
+                            <Link to={`/registerBook`} style={{ textDecoration: 'none' }}>
+                                Incluir
+                            </Link>
+                        </BtnEdit>
+                    </FakeDiv>
                 </Wrapp>
             </Container>
         </>
