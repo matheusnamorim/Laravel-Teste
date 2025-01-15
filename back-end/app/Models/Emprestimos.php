@@ -9,5 +9,5 @@ class Emprestimos extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['autor_id', 'livro_id', 'situacao', 'dtdevolucao'];
+    protected $fillable = ['user_id', 'livro_id', 'situacao', 'dtdevolucao'];
 }

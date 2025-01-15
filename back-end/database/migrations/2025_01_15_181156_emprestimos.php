@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('emprestimos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('autor_id')->nullable(false);
-            $table->foreign('autor_id')->on('usuarios')->references('id');
+            $table->unsignedBigInteger('user_id')->nullable(false);
+            $table->foreign('user_id')->on('usuarios')->references('id');
             $table->unsignedBigInteger('livro_id')->nullable(false);
             $table->foreign('livro_id')->on('livros')->references('id');
             $table->enum('situacao', ['Atrasado', 'Devolvido', 'Em Aberto'])->default('Em Aberto');
