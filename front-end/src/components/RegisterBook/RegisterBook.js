@@ -79,7 +79,11 @@ export default function RegisterBook() {
                         </div>
                         <div>
                             <p>Situação:</p>
-                            <input type="text" name="status" value={status} onChange={(e) => setStatus(e.target.value)}/>
+                            <select name="status" value={status} onChange={(e) => setStatus(e.target.value)}>
+                                <option value=""></option>
+                                <option value="Emprestado">Emprestado</option>
+                                <option value="Disponivel">Disponivel</option>
+                            </select>
                         </div>
                         <span>
                         <button>Gravar</button>

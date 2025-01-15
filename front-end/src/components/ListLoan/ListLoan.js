@@ -14,7 +14,6 @@ export default function ListLoan() {
     useEffect(() => {
         listLoan()
             .then((data) => {
-                console.log(data.data);
                 setList(data.data);
         }).catch((error) => {
             console.log(error);

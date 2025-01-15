@@ -62,9 +62,14 @@ function listLoan() {
     return promise;
 }
 
+function registerLoan(body) {
+    const promise = axios.post(`${BASE_URL}/emprestimo`, body);
+    return promise;
+}
+
 function deleteLoanById(id) {
     const promise = axios.delete(`${BASE_URL}/emprestimo/${id}`);
     return promise;
 }
 
-export { listUsers, listUserById, registerUsers, updateUserById, deleteUserById, listBooks, listBookById, registerBooks, deleteBookById, getAuthorByBookId, updateBookById, listLoan, deleteLoanById };
+export { listUsers, listUserById, registerUsers, updateUserById, deleteUserById, listBooks, listBookById, registerBooks, deleteBookById, getAuthorByBookId, updateBookById, listLoan, registerLoan, deleteLoanById };

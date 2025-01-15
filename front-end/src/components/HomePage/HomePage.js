@@ -36,6 +36,13 @@ export default function HomePage() {
                         <h1>Lista de Empréstimos</h1>
                     </Header>
                     <ListLoan />
+                    <FakeDiv>
+                        <BtnEdit>
+                            <Link to={`/registerLoan`} style={{ textDecoration: 'none' }}>
+                                Incluir
+                            </Link>
+                        </BtnEdit>
+                    </FakeDiv>
                 </Wrapp>
             </Container>
         </>
