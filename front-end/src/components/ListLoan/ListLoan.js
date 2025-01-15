@@ -14,6 +14,7 @@ export default function ListLoan() {
     useEffect(() => {
         listLoan()
             .then((data) => {
+                console.log(data.data);
                 setList(data.data);
         }).catch((error) => {
             console.log(error);
@@ -40,9 +41,11 @@ export default function ListLoan() {
                     <thead>
                         <tr>
                             <th>Código</th>
-                            <th>Nome Completo</th>
-                            <th>Dt. Nascimento</th>
-                            <th>Email</th>
+                            <th>Código Usuário</th>
+                            <th>Nome de Usuário</th>
+                            <th>Código Livro</th>
+                            <th>Nome do Livro</th>
+                            <th>Situação</th>
                             <th>Dh. Criação</th>
                             <th>Dh. Atualização</th>
                             <th></th>
@@ -53,9 +56,11 @@ export default function ListLoan() {
                         {list.map((value, index) => 
                             <tr key={index}>
                                 <td><p>{value.id}</p></td>
-                                <td><p>{value.nome} {value.sobrenome}</p></td>
-                                <td><p>{format(new Date(value.dtnascimento), 'dd/MM/yyyy')}</p></td>
-                                <td><p>{value.email}</p></td>
+                                <td><p>{value.usuario.id}</p></td>
+                                <td><p>{value.usuario.nome}</p></td>
+                                <td><p>{value.livro.id}</p></td>
+                                <td><p>{value.livro.titulo}</p></td>
+                                <td><p>{value.situacao}</p></td>
                                 <td><p>{format(new Date(value.created_at), 'dd/MM/yyyy HH:mm:ss')}</p></td>
                                 <td><p>{format(new Date(value.updated_at), 'dd/MM/yyyy HH:mm:ss')}</p></td>
                                 <td>

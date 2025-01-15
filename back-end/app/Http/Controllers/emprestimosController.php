@@ -10,7 +10,7 @@ class emprestimosController extends Controller
 {
     public function index()
     {
-        return Emprestimos::all();
+        return Emprestimos::with(['usuario', 'livro'])->get();
     }
 
     public function store(Request $request)
