@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\emprestimosController;
 use App\Http\Controllers\livrosController;
+use App\Http\Controllers\relacaoController;
 use App\Http\Controllers\usuariosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('usuarios', usuariosController::class);
 Route::apiResource('livros', livrosController::class);
 Route::apiResource('emprestimo', emprestimosController::class);
+Route::get('autores/{autores}/livros', [relacaoController::class, 'indexAutores']);
+Route::get('livros/{livros}/autores', [relacaoController::class, 'indexLivros']);

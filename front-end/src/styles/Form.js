@@ -12,18 +12,21 @@ const Wrapper = styled.form`
 	padding: 20px;
 	background-color: #8b8b70;
 	border: 1px solid #fff;
+	
 	div{
 		display: flex;
 		margin-bottom: 15px;
 		height: 40px;
 		align-items: center;
 	}
+
 	p{
 		min-width: 250px;
 		font-size: 20px;
 		font-weight: 400;
 		color: #FFF;
 	}
+
 	input{
 		height: 30px;
 		border-radius: 4px;
@@ -31,12 +34,14 @@ const Wrapper = styled.form`
 		padding-left: 10px;
 		background-color: #f0f0d8;
 	}
+		
 	h2{
 		font-size: 20px;
 		font-weight: 700;
 		margin-bottom: 10px;
 		color: #FFF;
 	}
+
 	select{
 		border-radius: 4px;
 		width: 100px;
@@ -46,6 +51,7 @@ const Wrapper = styled.form`
 		font-weight: 700;
 		cursor: pointer;
 	}
+
 	button{
 		border: none;
 		border-radius: 5px;
@@ -58,9 +64,19 @@ const Wrapper = styled.form`
 		margin-left: 20px;
 		color: #000;
 	}
+
 	span{
 		display: flex;
 		justify-content: flex-end;
 		width: 100%;
+	}
+	
+	select{
+		height: 50px;
+		width: 100%;
+		border-radius: 4px;
+		border: none;
+		padding-left: 10px;
+		background-color: #f0f0d8;
 	}
 `;

@@ -31,9 +31,25 @@ function listBooks() {
     const promise = axios.get(`${BASE_URL}/livros`);
     return promise;
 }
+
+function listBookById(id) {
+    const promise = axios.get(`${BASE_URL}/livros/${id}`);
+    return promise;
+}
+
 function deleteBookById(id) {
     const promise = axios.delete(`${BASE_URL}/livros/${id}`);
     return promise;
 }
 
-export { listUsers, listUserById, registerUsers, updateUserById, deleteUserById, listBooks, deleteBookById };
+function getAuthorByBookId(id) {
+    const promise = axios.get(`${BASE_URL}/livros/${id}/autores`);
+    return promise;
+}
+
+function updateBookById(body, id) {
+    const promise = axios.put(`${BASE_URL}/livros/${id}`, body);
+    return promise;
+}
+
+export { listUsers, listUserById, registerUsers, updateUserById, deleteUserById, listBooks, listBookById, deleteBookById, getAuthorByBookId, updateBookById };

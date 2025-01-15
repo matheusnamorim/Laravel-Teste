@@ -10,5 +10,9 @@ class Usuarios extends Model
     use HasFactory;
 
     protected $fillable = ['nome', 'dtnascimento', 'email'];
-    
+
+    public function livros()
+    {
+        return $this->hasMany(related: Livros::class, foreignKey: 'autor_id');
+    }
 }

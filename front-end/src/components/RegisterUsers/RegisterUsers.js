@@ -46,7 +46,7 @@ export default function RegisterUsers() {
                             <input type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                         </div>
                         <span>
-                        <button>Atualizar</button>
+                        <button>Gravar</button>
                     </span>
                     </Form>
                 </Wrapp>
