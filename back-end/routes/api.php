@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\emprestimosController;
 use App\Http\Controllers\livrosController;
 use App\Http\Controllers\usuariosController;
 use Illuminate\Http\Request;
@@ -22,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('usuarios', usuariosController::class);
 Route::apiResource('livros', livrosController::class);
+Route::apiResource('emprestimo', emprestimosController::class);
